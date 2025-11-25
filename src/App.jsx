@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 
-const PLAYER_1 = "⚪";
-const PLAYER_2 = "⚫";
+const PLAYER_1 = "❌";
+const PLAYER_2 = "⭕";
 
 export default function Game() {
   const [cellStatus, setCellStatus] = useState(Array(9).fill(null));
@@ -56,9 +56,11 @@ export default function Game() {
   if (isGameOver) {
     return (
       <>
-        <Board CellStatus={cellStatus} handleCellClick={handleClick} />
-        <div className="game-info">
-          <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
+        <div className="game">
+          <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+          <div className="game-info">
+            <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
+          </div>
         </div>
       </>
     );
@@ -66,9 +68,11 @@ export default function Game() {
 
   return (
     <>
-      <Board CellStatus={cellStatus} handleCellClick={handleClick} />
-      <div className="game-info">
-        <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
+      <div className="game">
+        <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+        <div className="game-info">
+          <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
+        </div>
       </div>
     </>
   );
@@ -76,7 +80,7 @@ export default function Game() {
 
 function Board({ CellStatus, handleCellClick }) {
   return (
-    <>
+    <div className="board">
       <div className="board-row">
         <Cell value={CellStatus[0]} onCellClick={() => handleCellClick(0)} />
         <Cell value={CellStatus[1]} onCellClick={() => handleCellClick(1)} />
@@ -92,7 +96,7 @@ function Board({ CellStatus, handleCellClick }) {
         <Cell value={CellStatus[7]} onCellClick={() => handleCellClick(7)} />
         <Cell value={CellStatus[8]} onCellClick={() => handleCellClick(8)} />
       </div>
-    </>
+    </div>
   );
 }
 
