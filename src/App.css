@@ -27,6 +27,19 @@ body {
   width: 36px;
 }
 
+.cell-l-border {
+  border-left: 1.5px solid #000;
+}
+.cell-r-border {
+  border-right: 1.5px solid #000;
+}
+.cell-t-border {
+  border-top: 1.5px solid #000;
+}
+.cell-b-border {
+  border-bottom: 1.5px solid #000;
+}
+
 .board-row:after {
   clear: both;
   content: "";
