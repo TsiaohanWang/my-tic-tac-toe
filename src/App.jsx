@@ -269,7 +269,7 @@ export function UltimateGame() {
     return (
       <>
         <div className="game">
-          <div className="game-title">Tic-Tac-Toe</div>
+          <div className="game-title">Ultimate Tic-Tac-Toe</div>
           <UltimateBoard
             CellStatus={cellStatus}
             handleCellClick={handleClick}
@@ -286,7 +286,7 @@ export function UltimateGame() {
     return (
       <>
         <div className="game">
-          <div className="game-title">Tic-Tac-Toe</div>
+          <div className="game-title">Ultimate Tic-Tac-Toe</div>
           <UltimateBoard
             CellStatus={cellStatus}
             handleCellClick={handleClick}
@@ -302,7 +302,7 @@ export function UltimateGame() {
   return (
     <>
       <div className="game">
-        <div className="game-title">Tic-Tac-Toe</div>
+        <div className="game-title">Ultimate Tic-Tac-Toe</div>
         <UltimateBoard CellStatus={cellStatus} handleCellClick={handleClick} />
         <div className="game-info">
           <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
