@@ -66,6 +66,7 @@ export function DefaultGame() {
     return (
       <>
         <div className="game">
+          <div className="game-title">Tic-Tac-Toe</div>
           <Board CellStatus={cellStatus} handleCellClick={handleClick} />
           <div className="game-info">
             <div>Game Over! Draw!</div>
@@ -79,6 +80,7 @@ export function DefaultGame() {
     return (
       <>
         <div className="game">
+          <div className="game-title">Tic-Tac-Toe</div>
           <Board CellStatus={cellStatus} handleCellClick={handleClick} />
           <div className="game-info">
             <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
@@ -91,6 +93,7 @@ export function DefaultGame() {
   return (
     <>
       <div className="game">
+        <div className="game-title">Tic-Tac-Toe</div>
         <Board CellStatus={cellStatus} handleCellClick={handleClick} />
         <div className="game-info">
           <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
@@ -165,6 +168,7 @@ export function InfinityGame() {
     return (
       <>
         <div className="game">
+          <div className="game-title">Infinity Tic-Tac-Toe</div>
           <div className="game-info">
             <div>ROUND {Math.trunc(history.length / 2)}</div>
           </div>
@@ -180,6 +184,7 @@ export function InfinityGame() {
   return (
     <>
       <div className="game">
+        <div className="game-title">Infinity Tic-Tac-Toe</div>
         <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -264,6 +269,7 @@ export function UltimateGame() {
     return (
       <>
         <div className="game">
+          <div className="game-title">Tic-Tac-Toe</div>
           <UltimateBoard
             CellStatus={cellStatus}
             handleCellClick={handleClick}
@@ -280,6 +286,7 @@ export function UltimateGame() {
     return (
       <>
         <div className="game">
+          <div className="game-title">Tic-Tac-Toe</div>
           <UltimateBoard
             CellStatus={cellStatus}
             handleCellClick={handleClick}
@@ -295,6 +302,7 @@ export function UltimateGame() {
   return (
     <>
       <div className="game">
+        <div className="game-title">Tic-Tac-Toe</div>
         <UltimateBoard CellStatus={cellStatus} handleCellClick={handleClick} />
         <div className="game-info">
           <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
