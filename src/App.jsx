@@ -4,10 +4,12 @@ import { Board, UltimateBoard } from "./Board.jsx";
 
 const PLAYER_1 = "❌";
 const PLAYER_2 = "⭕";
+const DRAW = "Draw";
 
 export function DefaultGame() {
   const [cellStatus, setCellStatus] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [isGameDraw, setIsGameDraw] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [history, setHistory] = useState([Array(9).fill(null)]);
 
@@ -31,6 +33,7 @@ export function DefaultGame() {
     const isBoardFull = newCellStatus.every((cell) => cell != null);
     if (isBoardFull) {
       setIsGameOver(true);
+      setIsGameDraw(true);
     }
   }
 
@@ -45,6 +48,7 @@ export function DefaultGame() {
       [0, 4, 8],
       [2, 4, 6],
     ];
+
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (
@@ -56,6 +60,19 @@ export function DefaultGame() {
       }
     }
     return null;
+  }
+
+  if (isGameDraw && isGameOver) {
+    return (
+      <>
+        <div className="game">
+          <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+          <div className="game-info">
+            <div>Game Over! Draw!</div>
+          </div>
+        </div>
+      </>
+    );
   }
 
   if (isGameOver) {
@@ -148,6 +165,9 @@ export function InfinityGame() {
     return (
       <>
         <div className="game">
+          <div className="game-info">
+            <div>ROUND {Math.trunc(history.length / 2)}</div>
+          </div>
           <Board CellStatus={cellStatus} handleCellClick={handleClick} />
           <div className="game-info">
             <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
@@ -160,6 +180,9 @@ export function InfinityGame() {
   return (
     <>
       <div className="game">
+        <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
         <Board CellStatus={cellStatus} handleCellClick={handleClick} />
         <div className="game-info">
           <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
@@ -174,6 +197,7 @@ export function UltimateGame() {
   const [cellStatus, setCellStatus] = useState(initialStatus);
   const [unitStatus, setUnitStatus] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [isGameDraw, setIsGameDraw] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [history, setHistory] = useState([initialStatus]);
 
@@ -198,9 +222,11 @@ export function UltimateGame() {
     if (calcUnitWinner(newUnitStatus)) {
       setIsGameOver(true);
     }
+
     const isBoardFull = newUnitStatus.every((cell) => cell != null);
     if (isBoardFull) {
       setIsGameOver(true);
+      setIsGameDraw(true);
     }
   }
 
@@ -215,6 +241,7 @@ export function UltimateGame() {
       [0, 4, 8],
       [2, 4, 6],
     ];
+
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (
@@ -225,7 +252,28 @@ export function UltimateGame() {
         return unitStatus[a];
       }
     }
+
+    if (unitStatus.every((cell) => cell != null)) {
+      return DRAW;
+    }
+
     return null;
+  }
+
+  if (isGameDraw && isGameOver) {
+    return (
+      <>
+        <div className="game">
+          <UltimateBoard
+            CellStatus={cellStatus}
+            handleCellClick={handleClick}
+          />
+          <div className="game-info">
+            <div>Game Over! Draw!</div>
+          </div>
+        </div>
+      </>
+    );
   }
 
   if (isGameOver) {
