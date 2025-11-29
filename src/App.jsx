@@ -72,7 +72,10 @@ export function DefaultGame({ swapEnabled = false }) {
       <>
         <div className="game">
           <div className="game-title">Swap Tic-Tac-Toe</div>
-          <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+          <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
+          <Board CellStatus={cellStatus} handleCellClick={null} />
           <div className="game-info">
             <div>Do you want to swap players' positions?</div>
             <button
@@ -104,6 +107,9 @@ export function DefaultGame({ swapEnabled = false }) {
         <>
           <div className="game">
             <div className="game-title">Swap Tic-Tac-Toe</div>
+            <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
             <Board CellStatus={cellStatus} handleCellClick={handleClick} />
             <div className="game-info">
               <div>Game Over! Draw!</div>
@@ -117,6 +123,9 @@ export function DefaultGame({ swapEnabled = false }) {
       <>
         <div className="game">
           <div className="game-title">Tic-Tac-Toe</div>
+          <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
           <Board CellStatus={cellStatus} handleCellClick={handleClick} />
           <div className="game-info">
             <div>Game Over! Draw!</div>
@@ -132,6 +141,9 @@ export function DefaultGame({ swapEnabled = false }) {
         <>
           <div className="game">
             <div className="game-title">Swap Tic-Tac-Toe</div>
+            <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
             <Board CellStatus={cellStatus} handleCellClick={handleClick} />
             <div className="game-info">
               <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
@@ -145,6 +157,9 @@ export function DefaultGame({ swapEnabled = false }) {
       <>
         <div className="game">
           <div className="game-title">Tic-Tac-Toe</div>
+          <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
           <Board CellStatus={cellStatus} handleCellClick={handleClick} />
           <div className="game-info">
             <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
@@ -159,6 +174,9 @@ export function DefaultGame({ swapEnabled = false }) {
       <>
         <div className="game">
           <div className="game-title">Swap Tic-Tac-Toe</div>
+          <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
           <Board CellStatus={cellStatus} handleCellClick={handleClick} />
           <div className="game-info">
             <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
@@ -172,6 +190,9 @@ export function DefaultGame({ swapEnabled = false }) {
     <>
       <div className="game">
         <div className="game-title">Tic-Tac-Toe</div>
+        <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
         <Board CellStatus={cellStatus} handleCellClick={handleClick} />
         <div className="game-info">
           <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
@@ -253,7 +274,7 @@ export function InfinityGame({ swapEnabled = false }) {
           <div className="game-info">
             <div>ROUND {Math.trunc(history.length / 2)}</div>
           </div>
-          <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+          <Board CellStatus={cellStatus} handleCellClick={null} />
           <div className="game-info">
             <div>Do you want to swap players' positions?</div>
             <button
@@ -422,10 +443,10 @@ export function UltimateGame({ swapEnabled = false }) {
       <>
         <div className="game">
           <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
-          <UltimateBoard
-            CellStatus={cellStatus}
-            handleCellClick={handleClick}
-          />
+          <div className="game-info">
+            <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+          </div>
+          <UltimateBoard CellStatus={cellStatus} handleCellClick={null} />
           <div className="game-info">
             <div>Do you want to swap players' positions?</div>
             <button
@@ -457,6 +478,9 @@ export function UltimateGame({ swapEnabled = false }) {
         <>
           <div className="game">
             <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+            <div className="game-info">
+              <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+            </div>
             <UltimateBoard
               CellStatus={cellStatus}
               handleCellClick={handleClick}
@@ -473,6 +497,9 @@ export function UltimateGame({ swapEnabled = false }) {
       <>
         <div className="game">
           <div className="game-title">Ultimate Tic-Tac-Toe</div>
+          <div className="game-info">
+            <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+          </div>
           <UltimateBoard
             CellStatus={cellStatus}
             handleCellClick={handleClick}
@@ -491,6 +518,9 @@ export function UltimateGame({ swapEnabled = false }) {
         <>
           <div className="game">
             <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+            <div className="game-info">
+              <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+            </div>
             <UltimateBoard
               CellStatus={cellStatus}
               handleCellClick={handleClick}
@@ -507,6 +537,9 @@ export function UltimateGame({ swapEnabled = false }) {
       <>
         <div className="game">
           <div className="game-title">Ultimate Tic-Tac-Toe</div>
+          <div className="game-info">
+            <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+          </div>
           <UltimateBoard
             CellStatus={cellStatus}
             handleCellClick={handleClick}
@@ -524,6 +557,9 @@ export function UltimateGame({ swapEnabled = false }) {
       <>
         <div className="game">
           <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+          <div className="game-info">
+            <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+          </div>
           <UltimateBoard
             CellStatus={cellStatus}
             handleCellClick={handleClick}
@@ -540,6 +576,9 @@ export function UltimateGame({ swapEnabled = false }) {
     <>
       <div className="game">
         <div className="game-title">Ultimate Tic-Tac-Toe</div>
+        <div className="game-info">
+          <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+        </div>
         <UltimateBoard CellStatus={cellStatus} handleCellClick={handleClick} />
         <div className="game-info">
           <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
