@@ -7,5 +7,9 @@ createRoot(document.getElementById('root')).render(
     <DefaultGame />
     <InfinityGame />
     <UltimateGame />
+
+    <DefaultGame swapEnabled={true} />
+    <InfinityGame swapEnabled={true} />
+    <UltimateGame swapEnabled={true} />
   </StrictMode>,
 )

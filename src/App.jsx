@@ -6,9 +6,11 @@ const PLAYER_1 = "❌";
 const PLAYER_2 = "⭕";
 const DRAW = "Draw";
 
-export function DefaultGame() {
+export function DefaultGame({ swapEnabled = false }) {
   const [cellStatus, setCellStatus] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [isSwapped, setIsSwapped] = useState(false);
+  const [isSwapConfirmed, setIsSwapConfirmed] = useState(false);
   const [isGameDraw, setIsGameDraw] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [history, setHistory] = useState([Array(9).fill(null)]);
@@ -24,9 +26,11 @@ export function DefaultGame() {
     } else {
       newCellStatus[i] = PLAYER_2;
     }
+
     setIsXNext(!isXNext);
     setHistory(history.concat([newCellStatus]));
     setCellStatus(newCellStatus);
+
     if (calcWinner(newCellStatus)) {
       setIsGameOver(true);
     }
@@ -62,7 +66,53 @@ export function DefaultGame() {
     return null;
   }
 
+  if (swapEnabled && history.length == 2 && !isSwapConfirmed) {
+    console.log("Swapping players' positions?");
+    return (
+      <>
+        <div className="game">
+          <div className="game-title">Swap Tic-Tac-Toe</div>
+          <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+          <div className="game-info">
+            <div>Do you want to swap players' positions?</div>
+            <button
+              onClick={() => {
+                setIsXNext(!isXNext);
+                setIsSwapped(true);
+                setIsSwapConfirmed(true);
+              }}
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => {
+                setIsXNext(isXNext);
+                setIsSwapConfirmed(true);
+              }}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   if (isGameDraw && isGameOver) {
+    if (swapEnabled && isSwapConfirmed) {
+      return (
+        <>
+          <div className="game">
+            <div className="game-title">Swap Tic-Tac-Toe</div>
+            <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+            <div className="game-info">
+              <div>Game Over! Draw!</div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
     return (
       <>
         <div className="game">
@@ -77,6 +127,20 @@ export function DefaultGame() {
   }
 
   if (isGameOver) {
+    if (swapEnabled && isSwapConfirmed) {
+      return (
+        <>
+          <div className="game">
+            <div className="game-title">Swap Tic-Tac-Toe</div>
+            <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+            <div className="game-info">
+              <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
     return (
       <>
         <div className="game">
@@ -84,6 +148,20 @@ export function DefaultGame() {
           <Board CellStatus={cellStatus} handleCellClick={handleClick} />
           <div className="game-info">
             <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (swapEnabled) {
+    return (
+      <>
+        <div className="game">
+          <div className="game-title">Swap Tic-Tac-Toe</div>
+          <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+          <div className="game-info">
+            <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
           </div>
         </div>
       </>
@@ -103,9 +181,11 @@ export function DefaultGame() {
   );
 }
 
-export function InfinityGame() {
+export function InfinityGame({ swapEnabled = false }) {
   const [cellStatus, setCellStatus] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [isSwapped, setIsSwapped] = useState(false);
+  const [isSwapConfirmed, setIsSwapConfirmed] = useState(false);
   const [XMoveQueue, setXMoveQueue] = useState([]);
   const [OMoveQueue, setOMoveQueue] = useState([]);
   const [isGameOver, setIsGameOver] = useState(false);
@@ -164,7 +244,59 @@ export function InfinityGame() {
     return null;
   }
 
+  if (swapEnabled && history.length == 2 && !isSwapConfirmed) {
+    console.log("Swapping players' positions?");
+    return (
+      <>
+        <div className="game">
+          <div className="game-title">Swap Infinity Tic-Tac-Toe</div>
+          <div className="game-info">
+            <div>ROUND {Math.trunc(history.length / 2)}</div>
+          </div>
+          <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+          <div className="game-info">
+            <div>Do you want to swap players' positions?</div>
+            <button
+              onClick={() => {
+                setIsXNext(!isXNext);
+                setIsSwapped(true);
+                setIsSwapConfirmed(true);
+              }}
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => {
+                setIsXNext(isXNext);
+                setIsSwapConfirmed(true);
+              }}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   if (isGameOver) {
+    if (swapEnabled && isSwapConfirmed) {
+      return (
+        <>
+          <div className="game">
+            <div className="game-title">Swap Infinity Tic-Tac-Toe</div>
+            <div className="game-info">
+              <div>ROUND {Math.trunc(history.length / 2)}</div>
+            </div>
+            <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+            <div className="game-info">
+              <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
     return (
       <>
         <div className="game">
@@ -175,6 +307,23 @@ export function InfinityGame() {
           <Board CellStatus={cellStatus} handleCellClick={handleClick} />
           <div className="game-info">
             <div>Game Over! Winner: {calcWinner(cellStatus)}</div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (swapEnabled) {
+    return (
+      <>
+        <div className="game">
+          <div className="game-title">Swap Infinity Tic-Tac-Toe</div>
+          <div className="game-info">
+            <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
+          </div>
+          <Board CellStatus={cellStatus} handleCellClick={handleClick} />
+          <div className="game-info">
+            <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
           </div>
         </div>
       </>
@@ -197,11 +346,13 @@ export function InfinityGame() {
   );
 }
 
-export function UltimateGame() {
+export function UltimateGame({ swapEnabled = false }) {
   const initialStatus = Array.from({ length: 9 }, () => Array(9).fill(null));
   const [cellStatus, setCellStatus] = useState(initialStatus);
   const [unitStatus, setUnitStatus] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
+  const [isSwapped, setIsSwapped] = useState(false);
+  const [isSwapConfirmed, setIsSwapConfirmed] = useState(false);
   const [isGameDraw, setIsGameDraw] = useState(false);
   const [isGameOver, setIsGameOver] = useState(false);
   const [history, setHistory] = useState([initialStatus]);
@@ -265,7 +416,59 @@ export function UltimateGame() {
     return null;
   }
 
+  if (swapEnabled && history.length == 2 && !isSwapConfirmed) {
+    console.log("Swapping players' positions?");
+    return (
+      <>
+        <div className="game">
+          <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+          <UltimateBoard
+            CellStatus={cellStatus}
+            handleCellClick={handleClick}
+          />
+          <div className="game-info">
+            <div>Do you want to swap players' positions?</div>
+            <button
+              onClick={() => {
+                setIsXNext(!isXNext);
+                setIsSwapped(true);
+                setIsSwapConfirmed(true);
+              }}
+            >
+              Yes
+            </button>
+            <button
+              onClick={() => {
+                setIsXNext(isXNext);
+                setIsSwapConfirmed(true);
+              }}
+            >
+              No
+            </button>
+          </div>
+        </div>
+      </>
+    );
+  }
+
   if (isGameDraw && isGameOver) {
+    if (swapEnabled && isSwapConfirmed) {
+      return (
+        <>
+          <div className="game">
+            <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+            <UltimateBoard
+              CellStatus={cellStatus}
+              handleCellClick={handleClick}
+            />
+            <div className="game-info">
+              <div>Game Over! Draw!</div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
     return (
       <>
         <div className="game">
@@ -283,6 +486,23 @@ export function UltimateGame() {
   }
 
   if (isGameOver) {
+    if (swapEnabled && isSwapConfirmed) {
+      return (
+        <>
+          <div className="game">
+            <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+            <UltimateBoard
+              CellStatus={cellStatus}
+              handleCellClick={handleClick}
+            />
+            <div className="game-info">
+              <div>Game Over! Winner: {calcUnitWinner(unitStatus)}</div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
     return (
       <>
         <div className="game">
@@ -293,6 +513,23 @@ export function UltimateGame() {
           />
           <div className="game-info">
             <div>Game Over! Winner: {calcUnitWinner(unitStatus)}</div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  if (swapEnabled) {
+    return (
+      <>
+        <div className="game">
+          <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+          <UltimateBoard
+            CellStatus={cellStatus}
+            handleCellClick={handleClick}
+          />
+          <div className="game-info">
+            <div>Next player: {isXNext ? PLAYER_1 : PLAYER_2}</div>
           </div>
         </div>
       </>
