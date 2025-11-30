@@ -7,6 +7,8 @@ const PLAYER_2 = "⭕";
 const DRAW = "Draw";
 
 export function DefaultGame({ swapEnabled = false }) {
+  const gameTitle = swapEnabled ? "Swap Tic-Tac-Toe" : "Tic-Tac-Toe";
+
   const [cellStatus, setCellStatus] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const [isSwapped, setIsSwapped] = useState(false);
@@ -71,7 +73,7 @@ export function DefaultGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Swap Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -106,7 +108,7 @@ export function DefaultGame({ swapEnabled = false }) {
       return (
         <>
           <div className="game">
-            <div className="game-title">Swap Tic-Tac-Toe</div>
+            <div className="game-title">{gameTitle}</div>
             <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -122,7 +124,7 @@ export function DefaultGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -140,7 +142,7 @@ export function DefaultGame({ swapEnabled = false }) {
       return (
         <>
           <div className="game">
-            <div className="game-title">Swap Tic-Tac-Toe</div>
+            <div className="game-title">{gameTitle}</div>
             <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -156,7 +158,7 @@ export function DefaultGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -173,7 +175,7 @@ export function DefaultGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Swap Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -189,7 +191,7 @@ export function DefaultGame({ swapEnabled = false }) {
   return (
     <>
       <div className="game">
-        <div className="game-title">Tic-Tac-Toe</div>
+        <div className="game-title">{gameTitle}</div>
         <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -203,6 +205,8 @@ export function DefaultGame({ swapEnabled = false }) {
 }
 
 export function InfinityGame({ swapEnabled = false }) {
+  const gameTitle = swapEnabled ? "Swap Infinity Tic-Tac-Toe" : "Infinity Tic-Tac-Toe";
+
   const [cellStatus, setCellStatus] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const [isSwapped, setIsSwapped] = useState(false);
@@ -270,7 +274,7 @@ export function InfinityGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Swap Infinity Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
             <div>ROUND {Math.trunc(history.length / 2)}</div>
           </div>
@@ -305,7 +309,7 @@ export function InfinityGame({ swapEnabled = false }) {
       return (
         <>
           <div className="game">
-            <div className="game-title">Swap Infinity Tic-Tac-Toe</div>
+            <div className="game-title">{gameTitle}</div>
             <div className="game-info">
               <div>ROUND {Math.trunc(history.length / 2)}</div>
             </div>
@@ -321,7 +325,7 @@ export function InfinityGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Infinity Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
             <div>ROUND {Math.trunc(history.length / 2)}</div>
           </div>
@@ -338,7 +342,7 @@ export function InfinityGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Swap Infinity Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
             <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
           </div>
@@ -354,7 +358,7 @@ export function InfinityGame({ swapEnabled = false }) {
   return (
     <>
       <div className="game">
-        <div className="game-title">Infinity Tic-Tac-Toe</div>
+        <div className="game-title">{gameTitle}</div>
         <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
@@ -368,6 +372,8 @@ export function InfinityGame({ swapEnabled = false }) {
 }
 
 export function UltimateGame({ swapEnabled = false }) {
+  const gameTitle = swapEnabled ? "Swap Ultimate Tic-Tac-Toe" : "Ultimate Tic-Tac-Toe";
+
   const initialStatus = Array.from({ length: 9 }, () => Array(9).fill(null));
   const [cellStatus, setCellStatus] = useState(initialStatus);
   const [unitStatus, setUnitStatus] = useState(Array(9).fill(null));
@@ -442,7 +448,7 @@ export function UltimateGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
             <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
           </div>
@@ -477,7 +483,7 @@ export function UltimateGame({ swapEnabled = false }) {
       return (
         <>
           <div className="game">
-            <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+            <div className="game-title">{gameTitle}</div>
             <div className="game-info">
               <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
             </div>
@@ -496,7 +502,7 @@ export function UltimateGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Ultimate Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
             <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
           </div>
@@ -517,7 +523,7 @@ export function UltimateGame({ swapEnabled = false }) {
       return (
         <>
           <div className="game">
-            <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+            <div className="game-title">{gameTitle}</div>
             <div className="game-info">
               <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
             </div>
@@ -536,7 +542,7 @@ export function UltimateGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Ultimate Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
             <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
           </div>
@@ -556,7 +562,7 @@ export function UltimateGame({ swapEnabled = false }) {
     return (
       <>
         <div className="game">
-          <div className="game-title">Swap Ultimate Tic-Tac-Toe</div>
+          <div className="game-title">{gameTitle}</div>
           <div className="game-info">
             <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
           </div>
@@ -575,7 +581,7 @@ export function UltimateGame({ swapEnabled = false }) {
   return (
     <>
       <div className="game">
-        <div className="game-title">Ultimate Tic-Tac-Toe</div>
+        <div className="game-title">{gameTitle}</div>
         <div className="game-info">
           <div>ROUND {Math.trunc((history.length + 1) / 2)}</div>
         </div>
